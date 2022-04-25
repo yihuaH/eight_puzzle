@@ -1,6 +1,7 @@
 #include "Node.hpp"
 
 void Node::print_node(){
+    printf("---------");
     for (int i = 0; i < PUZZLE_LEVEL; i++){
         for (int j = 0; j < PUZZLE_LEVEL; j++){
                 if (state[i][j]==0)
@@ -33,7 +34,7 @@ void Node::find_x_y(){
 }
 
 Node::Node(){
-    
+
 }
 
 Node::Node(int state_p[PUZZLE_LEVEL][PUZZLE_LEVEL]){
