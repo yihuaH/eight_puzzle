@@ -1,20 +1,26 @@
 #include <math.h>
+#include <string>
 #include "problem.h"
 
 problem::problem(){
-    
+    //if create a problem, set goal state first
+    set_goal_state();
+
 }
 
 void problem::set_goal_state(){
-    char temp = '1';
-    for (size_t i = 0; i < PUZZLE_LEVEL; i++)
+    //set the goal state 1-9 
+    int temp = 1;
+    for (int i = 0; i < PUZZLE_LEVEL; i++)
     {
-        for (size_t j = 0; j < PUZZLE_LEVEL; j++)
+        for (int j = 0; j < PUZZLE_LEVEL; j++)
         {
             goal_state[i][j] = temp;
             temp++;
         }
         
     }
-    goal_state[PUZZLE_LEVEL-1][PUZZLE_LEVEL-1]='*';
+
+    //the last one is 0(blank/star)
+    goal_state[PUZZLE_LEVEL-1][PUZZLE_LEVEL-1]=0;
 }

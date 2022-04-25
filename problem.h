@@ -7,8 +7,8 @@ enum opt {up, down, left, right};
 class problem
 {
 public:
-    char initial_state [PUZZLE_LEVEL][PUZZLE_LEVEL];
-    char goal_state [PUZZLE_LEVEL][PUZZLE_LEVEL]; 
+    int initial_state [PUZZLE_LEVEL][PUZZLE_LEVEL];
+    int goal_state [PUZZLE_LEVEL][PUZZLE_LEVEL]; 
     void set_goal_state();
     opt operators;
     problem( );
