@@ -1,8 +1,11 @@
 #include <iostream>
-#include "problem.h"
+#include <stdio.h>
 
+#include "Node.hpp"
+#include "problem.hpp"
+using namespace std;
 
 int main() {
-    std::cout << "Hello, World!" << std::endl;
-    return 0;
+    problem b;
+    b.set_initial_state();
 }
