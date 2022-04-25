@@ -32,6 +32,10 @@ void Node::find_x_y(){
     
 }
 
+Node::Node(){
+    
+}
+
 Node::Node(int state_p[PUZZLE_LEVEL][PUZZLE_LEVEL]){
     //copy state value;
     for (int i = 0; i < PUZZLE_LEVEL; i++)
