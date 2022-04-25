@@ -1,7 +1,7 @@
 #include "Node.hpp"
 
 void Node::print_node(){
-    printf("---------");
+    printf("---------\n");
     for (int i = 0; i < PUZZLE_LEVEL; i++){
         for (int j = 0; j < PUZZLE_LEVEL; j++){
                 if (state[i][j]==0)
