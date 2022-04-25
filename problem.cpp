@@ -93,7 +93,19 @@ void problem::set_initial_state(){
             break;
         }
     }else if(choice==2){
-
+        int a[PUZZLE_LEVEL][PUZZLE_LEVEL];
+        printf("Enter your puzzle, use a zero to represent the blank\n");
+        for (int i = 0; i < PUZZLE_LEVEL; i++)
+        {
+            printf("Enter the %d row, use sapce or tabs between numbers\n", i+1);
+            for (int j = 0; j < PUZZLE_LEVEL; j++)
+            {
+                cin >> a[i][j];
+            }
+            
+        }
+        initial_state = new Node(a);
+        initial_state->print_node();
     }else{//reenter choice
         set_initial_state();
     }
