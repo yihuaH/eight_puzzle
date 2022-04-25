@@ -20,17 +20,8 @@ struct Node
     // h(x)
     int h_x;
     //print node
-    void print_node(){
-        for (int i = 0; i < PUZZLE_LEVEL; i++)
-        {
-            for (int j = 0; j < PUZZLE_LEVEL; j++)
-            {
-                printf("%d ", state[i][j]);
-            }
-            printf("\n");
-        }
-        
-    }
+    void print_node();
+    
 };
 
 #endif
