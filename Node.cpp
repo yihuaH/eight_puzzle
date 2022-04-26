@@ -1,8 +1,9 @@
 #include "Node.hpp"
 
 void Node::print_node(){
-    printf("---------\n");
+    printf("+-----+\n");
     for (int i = 0; i < PUZZLE_LEVEL; i++){
+        printf(" ");
         for (int j = 0; j < PUZZLE_LEVEL; j++){
                 if (state[i][j]==0)
                 {
@@ -13,6 +14,7 @@ void Node::print_node(){
             }
             printf("\n");
         }
+        printf("+-----+\n");
 }
 
 void Node::find_x_y(){
