@@ -53,3 +53,30 @@ Node::Node(int state_p[PUZZLE_LEVEL][PUZZLE_LEVEL]){
     find_x_y();
 
 }
+
+void Node::set_operators() {
+    if(x != 0) {
+        //up
+        operators_for_node[0] = up;
+    }else{
+        operators_for_node[0] = none;
+    }
+    if(x != 2){
+        //down
+        operators_for_node[1] = down;
+    }else{
+        operators_for_node[1] = none;
+    }
+    if(y != 0){
+        //left
+        operators_for_node[2] = left;
+    }else{
+        operators_for_node[2] = none;
+    }
+    if(y != 2){
+        //right
+        operators_for_node[3] = right;
+    }else{
+        operators_for_node[3] = none;
+    }
+}
