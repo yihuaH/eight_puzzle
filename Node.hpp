@@ -29,8 +29,9 @@ struct Node
     operators_for_puzzle operators_for_node [4];
     //set operator
     void set_operators();
-
     //creat new node after operator
+
+
 
     Node();
     Node(int [PUZZLE_LEVEL][PUZZLE_LEVEL]);

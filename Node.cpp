@@ -35,9 +35,7 @@ void Node::find_x_y(){
     
 }
 
-Node::Node(){
-
-}
+Node::Node()= default;
 
 Node::Node(int state_p[PUZZLE_LEVEL][PUZZLE_LEVEL]){
     //copy state value;
@@ -51,7 +49,8 @@ Node::Node(int state_p[PUZZLE_LEVEL][PUZZLE_LEVEL]){
     }
     //find x, y
     find_x_y();
-
+    set_operators();
+    cost_x = g_x + h_x;
 }
 
 void Node::set_operators() {

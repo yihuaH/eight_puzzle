@@ -97,7 +97,7 @@ void problem::set_initial_state(){
         printf("Enter your puzzle, use a zero to represent the blank\n");
         for (int i = 0; i < PUZZLE_LEVEL; i++)
         {
-            printf("Enter the %d row, use sapce or tabs between numbers\n", i+1);
+            printf("Enter the %d row, use space or tabs between numbers\n", i+1);
             for (int j = 0; j < PUZZLE_LEVEL; j++)
             {
                 cin >> a[i][j];
@@ -106,8 +106,47 @@ void problem::set_initial_state(){
         }
         initial_state = new Node(a);
         initial_state->print_node();
-    }else{//reenter choice
+    }else{
         set_initial_state();
     }
     
 }
+
+void problem::Uniform_cost_search() {
+    priority_queue<Node*, vector<Node*>, compare_node> answer;
+    answer.push(initial_state);
+    total_nodes++;
+    maximum_nodes_in_queue++;
+    depth++;
+    while(!answer.empty()){
+        if(compare_node_value(answer.top(), goal_state)){
+            //TODO print the path
+            printf("To solve this problem the search algorithm expanded a total of %d nodes.\n", total_nodes);
+            printf("The maximum number of nodes in the queue at any one time: %d.\n", maximum_nodes_in_queue);
+            printf("The depth of the goal node was %d. \n", depth);
+            return;
+        }
+    }
+    if(answer.empty()){
+        printf("Can't find the result.\n");
+        return;
+    }
+
+}
+
+bool problem::compare_node_value(Node *a, Node *b) {
+    bool temp = true;
+    for (int i = 0; i < PUZZLE_LEVEL; i++)
+    {
+        for (int j = 0; j < PUZZLE_LEVEL; j++)
+        {
+            if(a->state[i][j]!=b->state[i][j]){
+                temp = false;
+                return temp;
+            }
+        }
+
+    }
+    return temp;
+}
+
