@@ -5,7 +5,12 @@
 using namespace std;
 
 int main() {
-    problem a;
-    a.set_initial_state();
-    a.choose_algorithm();
+    char choice = 0;
+    while(choice!='n' && choice != 'N'){
+        problem a;
+        a.set_initial_state();
+        a.choose_algorithm();
+        printf("Continue? Y/N\n");
+        cin >> choice;
+    }
 }
