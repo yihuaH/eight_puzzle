@@ -23,7 +23,9 @@ public:
     static void welcome();
     void Uniform_cost_search();
     static bool compare_node_value(Node* a, Node* b);
-
+    void path_print(Node* temp);
+    void misplace_tile_heuristic();
+    int h_n_misplace_tile(Node* a, Node* b);
     problem();
 };
 

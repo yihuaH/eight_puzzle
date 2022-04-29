@@ -124,7 +124,7 @@ void problem::Uniform_cost_search() {
         answer.pop();
 
         if(compare_node_value(temp, goal_state)){
-            //TODO print the path
+            path_print(temp);
             printf("To solve this problem the search algorithm expanded a total of %d nodes.\n", total_nodes);
             printf("The maximum number of nodes in the queue at any one time: %d.\n", maximum_nodes_in_queue);
             printf("The depth of the goal node was %d. \n", depth);
@@ -197,5 +197,105 @@ bool problem::compare_node_value(Node *a, Node *b) {
 
     }
     return temp;
+}
+
+void problem::path_print(Node* temp) {
+    if (temp == nullptr){
+        return;
+    }
+    path_print(temp->parent);
+    printf("The best state to expand with g(n) = %d and h(n) = %d is \n",temp->g_x, temp->h_x);
+    temp->print_node();
+}
+
+void problem::misplace_tile_heuristic() {
+    priority_queue<Node*, vector<Node*>, compare_node> answer;
+    answer.push(initial_state);
+    initial_state->h_x = h_n_misplace_tile(initial_state, goal_state);
+    initial_state->cost_x = initial_state->g_x + initial_state->h_x;
+    total_nodes++;
+    maximum_nodes_in_queue++;
+    depth = 0;
+
+    while(!answer.empty()){
+        Node* temp = answer.top();
+        answer.pop();
+
+        if(compare_node_value(temp, goal_state)){
+            path_print(temp);
+            printf("To solve this problem the search algorithm expanded a total of %d nodes.\n", total_nodes);
+            printf("The maximum number of nodes in the queue at any one time: %d.\n", maximum_nodes_in_queue);
+            printf("The depth of the goal node was %d. \n", depth);
+            return;
+        }
+        for (int i = 0; i < 4; ++i) {
+            // check the operators
+            switch (temp->operators_for_node[i]) {
+                case go_up:
+                {
+                    Node* child = new Node(temp->state, go_up, temp);
+                    total_nodes++;
+                    child->h_x = h_n_misplace_tile(child, goal_state);
+                    child->cost_x = child->g_x + child->h_x;
+                    answer.push(child);
+                }
+                    break;
+                case go_down:
+                {
+                    Node* child = new Node(temp->state, go_down, temp);
+                    total_nodes++;
+                    child->h_x = h_n_misplace_tile(child, goal_state);
+                    child->cost_x = child->g_x + child->h_x;
+                    answer.push(child);
+                }
+                    break;
+                case go_left:
+                {
+                    Node* child = new Node(temp->state, go_left, temp);
+                    total_nodes++;
+                    child->h_x = h_n_misplace_tile(child, goal_state);
+                    child->cost_x = child->g_x + child->h_x;
+                    answer.push(child);
+                }
+                    break;
+                case go_right:
+                {
+                    Node* child = new Node(temp->state, go_right, temp);
+                    total_nodes++;
+                    child->h_x = h_n_misplace_tile(child, goal_state);
+                    child->cost_x = child->g_x + child->h_x;
+                    answer.push(child);
+                }
+                    break;
+                case go_none:
+                default:
+
+                    break;
+            }
+
+        }
+        //update depth
+        depth = answer.top()->g_x;
+        //update max nodes
+        if (maximum_nodes_in_queue < answer.size()){
+            maximum_nodes_in_queue = answer.size();
+        }
+    }
+
+    if(answer.empty()){
+        printf("Can't find the result.\n");
+        return;
+    }
+}
+
+int problem::h_n_misplace_tile(Node* a, Node* b) {
+    int ans = 0;
+    for (int i = 0; i < PUZZLE_LEVEL; ++i) {
+        for (int j = 0; j < PUZZLE_LEVEL; ++j) {
+            if(a->state[i][j] != b->state[i][j])
+                ans++;
+        }
+    }
+    return ans;
 }
 
