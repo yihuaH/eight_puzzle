@@ -5,7 +5,7 @@ using namespace std;
 #define NODE_H
 #define PUZZLE_LEVEL 3
 
-enum operators_for_puzzle {up, down, left, right, none};
+enum operators_for_puzzle {go_up, go_down, go_left, go_right, go_none};
 
 struct Node
 {
@@ -16,11 +16,11 @@ struct Node
     //*(blank) coordinate
     int x, y;
     //c(x) = g(x) + h(x)
-    int cost_x;
+    int cost_x = 0;
     // g(x)
-    int g_x;
+    int g_x = 0;
     // h(x)
-    int h_x;
+    int h_x = 0;
     //print node
     void print_node();
     //find x, y
@@ -35,6 +35,8 @@ struct Node
 
     Node();
     Node(int [PUZZLE_LEVEL][PUZZLE_LEVEL]);
+    //Node from parent
+    Node(int [PUZZLE_LEVEL][PUZZLE_LEVEL],operators_for_puzzle opt, Node* parent_p);
 };
 
 #endif

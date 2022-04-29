@@ -6,7 +6,7 @@
 //learn from https://stackoverflow.com/questions/15646780/priority-queue-of-nodes
 struct compare_node{
     bool operator()(Node * a, Node * b){
-        return a->cost_x < b->cost_x;
+        return a->cost_x > b->cost_x;
     }
 };
 

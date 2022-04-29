@@ -117,16 +117,65 @@ void problem::Uniform_cost_search() {
     answer.push(initial_state);
     total_nodes++;
     maximum_nodes_in_queue++;
-    depth++;
+    depth = 0;
+
     while(!answer.empty()){
-        if(compare_node_value(answer.top(), goal_state)){
+        Node* temp = answer.top();
+        answer.pop();
+
+        if(compare_node_value(temp, goal_state)){
             //TODO print the path
             printf("To solve this problem the search algorithm expanded a total of %d nodes.\n", total_nodes);
             printf("The maximum number of nodes in the queue at any one time: %d.\n", maximum_nodes_in_queue);
             printf("The depth of the goal node was %d. \n", depth);
             return;
         }
+        for (int i = 0; i < 4; ++i) {
+            // check the operators
+            switch (temp->operators_for_node[i]) {
+                case go_up:
+                {
+                    Node* child = new Node(temp->state, go_up, temp);
+                    total_nodes++;
+                    answer.push(child);
+                }
+                    break;
+                case go_down:
+                {
+                    Node* child = new Node(temp->state, go_down, temp);
+                    total_nodes++;
+                    answer.push(child);
+                }
+                    break;
+                case go_left:
+                {
+                    Node* child = new Node(temp->state, go_left, temp);
+                    total_nodes++;
+                    answer.push(child);
+                }
+                    break;
+                case go_right:
+                {
+                    Node* child = new Node(temp->state, go_right, temp);
+                    total_nodes++;
+                    answer.push(child);
+                }
+                    break;
+                case go_none:
+                default:
+
+                    break;
+            }
+
+        }
+        //update depth
+        depth = answer.top()->g_x;
+        //update max nodes
+        if (maximum_nodes_in_queue < answer.size()){
+            maximum_nodes_in_queue = answer.size();
+        }
     }
+
     if(answer.empty()){
         printf("Can't find the result.\n");
         return;
