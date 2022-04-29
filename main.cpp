@@ -5,7 +5,7 @@
 using namespace std;
 
 int main() {
-    problem b;
-    b.set_initial_state();
-    b.misplace_tile_heuristic();
+    problem a;
+    a.set_initial_state();
+    a.Euclidean_Distance_heuristic();
 }

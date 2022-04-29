@@ -26,6 +26,8 @@ public:
     void path_print(Node* temp);
     void misplace_tile_heuristic();
     int h_n_misplace_tile(Node* a, Node* b);
+    void Euclidean_Distance_heuristic();
+    static int h_n_euclidean_distance(Node* a, Node* b);
     problem();
 };
 
