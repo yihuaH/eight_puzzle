@@ -7,5 +7,5 @@ using namespace std;
 int main() {
     problem a;
     a.set_initial_state();
-    a.Euclidean_Distance_heuristic();
+    a.choose_algorithm();
 }

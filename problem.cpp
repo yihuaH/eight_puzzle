@@ -401,3 +401,26 @@ int problem::h_n_euclidean_distance(Node *a, Node *b) {
     return ans;
 }
 
+void problem::choose_algorithm() {
+    printf("Enter your choice of algorithm: \n");
+    printf("1: Uniform cost search\n");
+    printf("2: A* with the Misplaced Tile heuristic\n");
+    printf("3: A* with the Eucledian distance heuristic\n");
+    int choice;
+    cin >> choice;
+    switch (choice) {
+        case 1:
+            Uniform_cost_search();
+            break;
+        case 2:
+            misplace_tile_heuristic();
+            break;
+        case 3:
+            Euclidean_Distance_heuristic();
+            break;
+        default:
+            choose_algorithm();
+            break;
+    }
+}
+
