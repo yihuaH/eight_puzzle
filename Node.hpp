@@ -3,7 +3,7 @@ using namespace std;
 
 #ifndef NODE_H
 #define NODE_H
-#define PUZZLE_LEVEL 3
+#define PUZZLE_LEVEL 4
 
 enum operators_for_puzzle {go_up, go_down, go_left, go_right, go_none};
 

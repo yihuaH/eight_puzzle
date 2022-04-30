@@ -65,7 +65,7 @@ void Node::set_operators() {
     }else{
         operators_for_node[0] = go_none;
     }
-    if(x != 2){
+    if(x != PUZZLE_LEVEL-1){
         //down
         operators_for_node[1] = go_down;
     }else{
@@ -77,7 +77,7 @@ void Node::set_operators() {
     }else{
         operators_for_node[2] = go_none;
     }
-    if(y != 2){
+    if(y != PUZZLE_LEVEL-1){
         //right
         operators_for_node[3] = go_right;
     }else{
