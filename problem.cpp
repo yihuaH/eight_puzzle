@@ -37,7 +37,7 @@ void problem::set_initial_state(){
     cin >> choice;
     if (choice==1)
     {
-        printf("1.Trival\n2.Very Easy\n3.Easy\n4.Doable\n5.Oh Boy\n6.Impossible\n");
+        printf("1.Trivial\n2.Very Easy\n3.Easy\n4.Doable\n5.Oh Boy\n6.Impossible\n");
         cin >> choice;
         switch (choice)
         {
