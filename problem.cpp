@@ -1,6 +1,7 @@
 #include <iostream>
 #include "problem.hpp"
 #include "Node.hpp"
+#include <math.h>
 using namespace std;
 
 problem::problem(){
@@ -391,7 +392,7 @@ int problem::h_n_euclidean_distance(Node *a, Node *b) {
                 for (int k = 0; k < PUZZLE_LEVEL; ++k) {
                     for (int l = 0; l < PUZZLE_LEVEL; ++l) {
                         if (a->state[i][j] == b->state[k][l]){
-                            ans += abs(i-k) + abs(j-l);
+                            ans += sqrt(pow((i-k),2)+pow((j+l),2));
                         }
                     }
                 }
