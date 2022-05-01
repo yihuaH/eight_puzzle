@@ -317,6 +317,7 @@ void problem::Euclidean_Distance_heuristic() {
 
         if(compare_node_value(temp, goal_state)){
             path_print(temp);
+            printf("Goal!!!\n");
             printf("To solve this problem the search algorithm expanded a total of %d nodes.\n", total_nodes);
             printf("The maximum number of nodes in the queue at any one time: %d.\n", maximum_nodes_in_queue);
             printf("The depth of the goal node was %d. \n", depth);
