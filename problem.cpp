@@ -137,29 +137,69 @@ void problem::Uniform_cost_search() {
                 case go_up:
                 {
                     Node* child = new Node(temp->state, go_up, temp);
-                    total_nodes++;
-                    answer.push(child);
+                    priority_queue<Node*, vector<Node*>, compare_node> temp_queue {answer};
+                    while (!temp_queue.empty()){
+                      if(compare_node_value(child, temp_queue.top())){
+                        break;
+                      }else{
+                        temp_queue.pop();
+                      }
+                    }
+                    if(temp_queue.empty()){
+                      total_nodes++;
+                      answer.push(child);
+                    }
                 }
                     break;
                 case go_down:
                 {
                     Node* child = new Node(temp->state, go_down, temp);
-                    total_nodes++;
-                    answer.push(child);
+                    priority_queue<Node*, vector<Node*>, compare_node> temp_queue {answer};
+                    while (!temp_queue.empty()){
+                      if(compare_node_value(child, temp_queue.top())){
+                        break;
+                      }else{
+                        temp_queue.pop();
+                      }
+                    }
+                    if(temp_queue.empty()){
+                      total_nodes++;
+                      answer.push(child);
+                    }
                 }
                     break;
                 case go_left:
                 {
                     Node* child = new Node(temp->state, go_left, temp);
-                    total_nodes++;
-                    answer.push(child);
+                    priority_queue<Node*, vector<Node*>, compare_node> temp_queue {answer};
+                    while (!temp_queue.empty()){
+                      if(compare_node_value(child, temp_queue.top())){
+                        break;
+                      }else{
+                        temp_queue.pop();
+                      }
+                    }
+                    if(temp_queue.empty()){
+                      total_nodes++;
+                      answer.push(child);
+                    }
                 }
                     break;
                 case go_right:
                 {
                     Node* child = new Node(temp->state, go_right, temp);
-                    total_nodes++;
-                    answer.push(child);
+                    priority_queue<Node*, vector<Node*>, compare_node> temp_queue {answer};
+                    while (!temp_queue.empty()){
+                      if(compare_node_value(child, temp_queue.top())){
+                        break;
+                      }else{
+                        temp_queue.pop();
+                      }
+                    }
+                    if(temp_queue.empty()){
+                      total_nodes++;
+                      answer.push(child);
+                    }
                 }
                     break;
                 case go_none:
@@ -235,37 +275,77 @@ void problem::misplace_tile_heuristic() {
                 case go_up:
                 {
                     Node* child = new Node(temp->state, go_up, temp);
-                    total_nodes++;
                     child->h_x = h_n_misplace_tile(child, goal_state);
                     child->cost_x = child->g_x + child->h_x;
-                    answer.push(child);
+                    priority_queue<Node*, vector<Node*>, compare_node> temp_queue {answer};
+                    while (!temp_queue.empty()){
+                      if(compare_node_value(child, temp_queue.top())){
+                        break;
+                      }else{
+                        temp_queue.pop();
+                      }
+                    }
+                    if(temp_queue.empty()){
+                      total_nodes++;
+                      answer.push(child);
+                    }
                 }
                     break;
                 case go_down:
                 {
                     Node* child = new Node(temp->state, go_down, temp);
-                    total_nodes++;
                     child->h_x = h_n_misplace_tile(child, goal_state);
                     child->cost_x = child->g_x + child->h_x;
-                    answer.push(child);
+                    priority_queue<Node*, vector<Node*>, compare_node> temp_queue {answer};
+                    while (!temp_queue.empty()){
+                      if(compare_node_value(child, temp_queue.top())){
+                        break;
+                      }else{
+                        temp_queue.pop();
+                      }
+                    }
+                    if(temp_queue.empty()){
+                      total_nodes++;
+                      answer.push(child);
+                    }
                 }
                     break;
                 case go_left:
                 {
                     Node* child = new Node(temp->state, go_left, temp);
-                    total_nodes++;
                     child->h_x = h_n_misplace_tile(child, goal_state);
                     child->cost_x = child->g_x + child->h_x;
-                    answer.push(child);
+                    priority_queue<Node*, vector<Node*>, compare_node> temp_queue {answer};
+                    while (!temp_queue.empty()){
+                      if(compare_node_value(child, temp_queue.top())){
+                        break;
+                      }else{
+                        temp_queue.pop();
+                      }
+                    }
+                    if(temp_queue.empty()){
+                      total_nodes++;
+                      answer.push(child);
+                    }
                 }
                     break;
                 case go_right:
                 {
                     Node* child = new Node(temp->state, go_right, temp);
-                    total_nodes++;
                     child->h_x = h_n_misplace_tile(child, goal_state);
                     child->cost_x = child->g_x + child->h_x;
-                    answer.push(child);
+                    priority_queue<Node*, vector<Node*>, compare_node> temp_queue {answer};
+                    while (!temp_queue.empty()){
+                      if(compare_node_value(child, temp_queue.top())){
+                        break;
+                      }else{
+                        temp_queue.pop();
+                      }
+                    }
+                    if(temp_queue.empty()){
+                      total_nodes++;
+                      answer.push(child);
+                    }
                 }
                     break;
                 case go_none:
@@ -329,37 +409,77 @@ void problem::Euclidean_Distance_heuristic() {
                 case go_up:
                 {
                     Node* child = new Node(temp->state, go_up, temp);
-                    total_nodes++;
                     child->h_x = h_n_euclidean_distance(child, goal_state);
                     child->cost_x = child->g_x + child->h_x;
-                    answer.push(child);
+                    priority_queue<Node*, vector<Node*>, compare_node> temp_queue {answer};
+                    while (!temp_queue.empty()){
+                      if(compare_node_value(child, temp_queue.top())){
+                        break;
+                      }else{
+                        temp_queue.pop();
+                      }
+                    }
+                    if(temp_queue.empty()){
+                      total_nodes++;
+                      answer.push(child);
+                    }
                 }
                     break;
                 case go_down:
                 {
                     Node* child = new Node(temp->state, go_down, temp);
-                    total_nodes++;
                     child->h_x = h_n_euclidean_distance(child, goal_state);
                     child->cost_x = child->g_x + child->h_x;
-                    answer.push(child);
+                    priority_queue<Node*, vector<Node*>, compare_node> temp_queue {answer};
+                    while (!temp_queue.empty()){
+                      if(compare_node_value(child, temp_queue.top())){
+                        break;
+                      }else{
+                        temp_queue.pop();
+                      }
+                    }
+                    if(temp_queue.empty()){
+                      total_nodes++;
+                      answer.push(child);
+                    }
                 }
                     break;
                 case go_left:
                 {
                     Node* child = new Node(temp->state, go_left, temp);
-                    total_nodes++;
                     child->h_x = h_n_euclidean_distance(child, goal_state);
                     child->cost_x = child->g_x + child->h_x;
-                    answer.push(child);
+                    priority_queue<Node*, vector<Node*>, compare_node> temp_queue {answer};
+                    while (!temp_queue.empty()){
+                      if(compare_node_value(child, temp_queue.top())){
+                        break;
+                      }else{
+                        temp_queue.pop();
+                      }
+                    }
+                    if(temp_queue.empty()){
+                      total_nodes++;
+                      answer.push(child);
+                    }
                 }
                     break;
                 case go_right:
                 {
                     Node* child = new Node(temp->state, go_right, temp);
-                    total_nodes++;
                     child->h_x = h_n_euclidean_distance(child, goal_state);
                     child->cost_x = child->g_x + child->h_x;
-                    answer.push(child);
+                    priority_queue<Node*, vector<Node*>, compare_node> temp_queue {answer};
+                    while (!temp_queue.empty()){
+                      if(compare_node_value(child, temp_queue.top())){
+                        break;
+                      }else{
+                        temp_queue.pop();
+                      }
+                    }
+                    if(temp_queue.empty()){
+                      total_nodes++;
+                      answer.push(child);
+                    }
                 }
                     break;
                 case go_none:
