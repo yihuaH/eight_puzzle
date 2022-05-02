@@ -27,7 +27,6 @@ void problem::set_goal_state(){
         }
         
     }
-
     //the last one is 0(blank/star)
     goal_state->state[PUZZLE_LEVEL-1][PUZZLE_LEVEL-1]=0;
 }
@@ -103,14 +102,12 @@ void problem::set_initial_state(){
             {
                 cin >> a[i][j];
             }
-            
         }
         initial_state = new Node(a);
         initial_state->print_node();
     }else{
         set_initial_state();
     }
-    
 }
 
 void problem::Uniform_cost_search() {
@@ -137,10 +134,14 @@ void problem::Uniform_cost_search() {
                 case go_up:
                 {
                     Node* child = new Node(temp->state, go_up, temp);
+                    child->cost_x = child->g_x;
                     priority_queue<Node*, vector<Node*>, compare_node> temp_queue {answer};
                     while (!temp_queue.empty()){
-                      if(compare_node_value(child, temp_queue.top())){
-                        break;
+                      if(child->x == temp_queue.top()->x && child->y == temp_queue.top()->y){
+                        if(compare_node_value(child, temp_queue.top()))
+                          break;
+                        else
+                          temp_queue.pop();
                       }else{
                         temp_queue.pop();
                       }
@@ -154,10 +155,14 @@ void problem::Uniform_cost_search() {
                 case go_down:
                 {
                     Node* child = new Node(temp->state, go_down, temp);
+                    child->cost_x = child->g_x;
                     priority_queue<Node*, vector<Node*>, compare_node> temp_queue {answer};
                     while (!temp_queue.empty()){
-                      if(compare_node_value(child, temp_queue.top())){
-                        break;
+                      if(child->x == temp_queue.top()->x && child->y == temp_queue.top()->y){
+                        if(compare_node_value(child, temp_queue.top()))
+                          break;
+                        else
+                          temp_queue.pop();
                       }else{
                         temp_queue.pop();
                       }
@@ -171,10 +176,14 @@ void problem::Uniform_cost_search() {
                 case go_left:
                 {
                     Node* child = new Node(temp->state, go_left, temp);
+                    child->cost_x = child->g_x;
                     priority_queue<Node*, vector<Node*>, compare_node> temp_queue {answer};
                     while (!temp_queue.empty()){
-                      if(compare_node_value(child, temp_queue.top())){
-                        break;
+                      if(child->x == temp_queue.top()->x && child->y == temp_queue.top()->y){
+                        if(compare_node_value(child, temp_queue.top()))
+                          break;
+                        else
+                          temp_queue.pop();
                       }else{
                         temp_queue.pop();
                       }
@@ -188,10 +197,14 @@ void problem::Uniform_cost_search() {
                 case go_right:
                 {
                     Node* child = new Node(temp->state, go_right, temp);
+                    child->cost_x = child->g_x;
                     priority_queue<Node*, vector<Node*>, compare_node> temp_queue {answer};
                     while (!temp_queue.empty()){
-                      if(compare_node_value(child, temp_queue.top())){
-                        break;
+                      if(child->x == temp_queue.top()->x && child->y == temp_queue.top()->y){
+                        if(compare_node_value(child, temp_queue.top()))
+                          break;
+                        else
+                          temp_queue.pop();
                       }else{
                         temp_queue.pop();
                       }
@@ -207,7 +220,6 @@ void problem::Uniform_cost_search() {
 
                     break;
             }
-
         }
         //update depth
         depth = answer.top()->g_x;
@@ -279,8 +291,11 @@ void problem::misplace_tile_heuristic() {
                     child->cost_x = child->g_x + child->h_x;
                     priority_queue<Node*, vector<Node*>, compare_node> temp_queue {answer};
                     while (!temp_queue.empty()){
-                      if(compare_node_value(child, temp_queue.top())){
-                        break;
+                      if(child->x == temp_queue.top()->x && child->y == temp_queue.top()->y){
+                        if(compare_node_value(child, temp_queue.top()))
+                          break;
+                        else
+                          temp_queue.pop();
                       }else{
                         temp_queue.pop();
                       }
@@ -298,8 +313,11 @@ void problem::misplace_tile_heuristic() {
                     child->cost_x = child->g_x + child->h_x;
                     priority_queue<Node*, vector<Node*>, compare_node> temp_queue {answer};
                     while (!temp_queue.empty()){
-                      if(compare_node_value(child, temp_queue.top())){
-                        break;
+                      if(child->x == temp_queue.top()->x && child->y == temp_queue.top()->y){
+                        if(compare_node_value(child, temp_queue.top()))
+                          break;
+                        else
+                          temp_queue.pop();
                       }else{
                         temp_queue.pop();
                       }
@@ -317,8 +335,11 @@ void problem::misplace_tile_heuristic() {
                     child->cost_x = child->g_x + child->h_x;
                     priority_queue<Node*, vector<Node*>, compare_node> temp_queue {answer};
                     while (!temp_queue.empty()){
-                      if(compare_node_value(child, temp_queue.top())){
-                        break;
+                      if(child->x == temp_queue.top()->x && child->y == temp_queue.top()->y){
+                        if(compare_node_value(child, temp_queue.top()))
+                          break;
+                        else
+                          temp_queue.pop();
                       }else{
                         temp_queue.pop();
                       }
@@ -336,8 +357,11 @@ void problem::misplace_tile_heuristic() {
                     child->cost_x = child->g_x + child->h_x;
                     priority_queue<Node*, vector<Node*>, compare_node> temp_queue {answer};
                     while (!temp_queue.empty()){
-                      if(compare_node_value(child, temp_queue.top())){
-                        break;
+                      if(child->x == temp_queue.top()->x && child->y == temp_queue.top()->y){
+                        if(compare_node_value(child, temp_queue.top()))
+                          break;
+                        else
+                          temp_queue.pop();
                       }else{
                         temp_queue.pop();
                       }
@@ -413,8 +437,11 @@ void problem::Euclidean_Distance_heuristic() {
                     child->cost_x = child->g_x + child->h_x;
                     priority_queue<Node*, vector<Node*>, compare_node> temp_queue {answer};
                     while (!temp_queue.empty()){
-                      if(compare_node_value(child, temp_queue.top())){
-                        break;
+                      if(child->x == temp_queue.top()->x && child->y == temp_queue.top()->y){
+                        if(compare_node_value(child, temp_queue.top()))
+                          break;
+                        else
+                          temp_queue.pop();
                       }else{
                         temp_queue.pop();
                       }
@@ -432,8 +459,11 @@ void problem::Euclidean_Distance_heuristic() {
                     child->cost_x = child->g_x + child->h_x;
                     priority_queue<Node*, vector<Node*>, compare_node> temp_queue {answer};
                     while (!temp_queue.empty()){
-                      if(compare_node_value(child, temp_queue.top())){
-                        break;
+                      if(child->x == temp_queue.top()->x && child->y == temp_queue.top()->y){
+                        if(compare_node_value(child, temp_queue.top()))
+                          break;
+                        else
+                          temp_queue.pop();
                       }else{
                         temp_queue.pop();
                       }
@@ -451,8 +481,11 @@ void problem::Euclidean_Distance_heuristic() {
                     child->cost_x = child->g_x + child->h_x;
                     priority_queue<Node*, vector<Node*>, compare_node> temp_queue {answer};
                     while (!temp_queue.empty()){
-                      if(compare_node_value(child, temp_queue.top())){
-                        break;
+                      if(child->x == temp_queue.top()->x && child->y == temp_queue.top()->y){
+                        if(compare_node_value(child, temp_queue.top()))
+                          break;
+                        else
+                          temp_queue.pop();
                       }else{
                         temp_queue.pop();
                       }
@@ -470,8 +503,11 @@ void problem::Euclidean_Distance_heuristic() {
                     child->cost_x = child->g_x + child->h_x;
                     priority_queue<Node*, vector<Node*>, compare_node> temp_queue {answer};
                     while (!temp_queue.empty()){
-                      if(compare_node_value(child, temp_queue.top())){
-                        break;
+                      if(child->x == temp_queue.top()->x && child->y == temp_queue.top()->y){
+                        if(compare_node_value(child, temp_queue.top()))
+                          break;
+                        else
+                          temp_queue.pop();
                       }else{
                         temp_queue.pop();
                       }
@@ -487,7 +523,6 @@ void problem::Euclidean_Distance_heuristic() {
 
                     break;
             }
-
         }
         //update depth
         depth = answer.top()->g_x;
